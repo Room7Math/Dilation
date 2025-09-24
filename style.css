@@ -7,6 +7,7 @@ body {
     max-width: 1080px;
     margin: 0 auto;
     padding: 10px;
+    background-color: #ffffcc;
 }
 
 #main-container {
@@ -20,9 +21,15 @@ body {
 
 canvas {
     border: 1px solid black;
-    background-color: #f0f0f0;
+    background-color: #ffffff;
     width: 700px;
     height: 700px;
+
+}
+
+h3, h4 {
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 #controls {
@@ -69,6 +76,9 @@ footer {
 input {
     width: 60px;
 }
+#equation{
+    width: 140px;
+}
 
 #xCoord,
 #yCoord {
@@ -89,6 +99,12 @@ button {
     cursor: pointer;
     width: 100%;
     text-align: center;
+    background-color: #ffcccc;
+    border: 1px solid #000000;
+}
+button:hover {
+  background-color: #fc8fbc;
+  color: white;
 }
 
 @media (max-width: 1080px) {
