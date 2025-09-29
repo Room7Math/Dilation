@@ -1,0 +1,129 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    font-family: Arial, sans-serif;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: #ffffcc;
+}
+
+#main-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
+}
+
+canvas {
+    border: 1px solid black;
+    background-color: #ffffff;
+    width: 700px;
+    height: 700px;
+}
+
+h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#controls {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 360px;
+}
+
+#controls-left,
+#controls-right {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 170px;
+}
+
+div {
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#output,
+#transformationLog {
+    white-space: normal;
+    word-wrap: break-word;
+    max-width: 1000px;
+    font-size: 1.1em;
+}
+
+#transformationLog {
+    display: none;
+}
+
+footer {
+    position: relative;
+    margin-top: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+input {
+    width: 60px;
+}
+
+#xCoord,
+#yCoord {
+    width: 40px;
+}
+
+#xScaleFactor,
+#yScaleFactor {
+    width: 60px;
+}
+
+button {
+    padding: 5px 10px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    background-color: #ffcccc;
+    border: 1px solid #000000;
+}
+button:hover {
+    background-color: #fc8fbc;
+    color: white;
+}
+
+@media (max-width: 1080px) {
+    #main-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    #controls {
+        width: 100%;
+        max-width: 420px;
+        flex-direction: column;
+    }
+    #controls-left,
+    #controls-right {
+        width: 100%;
+    }
+    button {
+        width: auto;
+    }
+}
+
+@media (max-width: 600px) {
+    footer {
+        font-size: 0.9em;
+    }
+    canvas {
+        width: 400px;
+        height: 400px;
+    }
+}

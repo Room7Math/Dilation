@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transformations</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <div id="main-container">
+        <canvas id="gridCanvas"></canvas>
+        <div id="controls">
+            <div id="controls-left">
+                <h3>Dilation</h3>
+                <div>
+                    <label>x Scale: <input type="text" name="xScaleFactor" placeholder="e.g. 3/2"></label>
+                    <label>y Scale: <input type="text" name="yScaleFactor" placeholder="e.g. 3/2"></label>
+                    <button id="dilate">Dilate</button>
+                </div>
+                <h3>Center of Dilation</h3>
+                <div>
+                    <label>x: <input type="text" name="xCoord" value="0"></label>
+                    <label>y: <input type="text" name="yCoord" value="0"></label>
+                    <button id="resetCenter">Reset Center to (0,0)</button>
+                    <button id="setCenterByClick">Set Center by Click</button>
+                </div>
+            </div>
+            <div id="controls-right">
+                <button id="undo">Undo</button>
+                <button id="clearAll">Clear All Points</button>
+                <button id="saveShape">Save Shape</button>
+                <button id="loadShape">Load Shape</button>
+                <button id="toggleDilationView">Toggle Dilation View</button>
+                <button id="toggleHistory">Show Transformation History</button>
+            </div>
+        </div>
+    </div>
+    <div id="output">Coordinates: None</div>
+    <div id="transformationLog">Transformation History: None</div>
+    <footer>
+        <p>Author: Jin Young Chang</p>
+        <p><a href="mailto:chang_j@auhsd.us">chang_j@auhsd.us</a></p>
+        <p>&copy; 2025</p>
+    </footer>
+</body>
+</html>
