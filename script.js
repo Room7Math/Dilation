@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const pointMaxCount = 26; // Points A-Z allowed
     let isSettingCenter = false;
     let hasDilated = false;
+    let showPreImage = true; // Default to showing pre-image
     let showTransformationHistory = false; // Default to hidden
 
     // Save state for undo
@@ -219,7 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('output').textContent = `Coordinates: ${formattedCoords}`;
         drawGrid();
         drawCenterPoint();
-        if (hasDilated && history.length > 0) {
+        if (hasDilated && history.length > 0 && showPreImage) {
             drawLines(JSON.parse(JSON.stringify(history[history.length - 1])), true);
         }
         drawRays(points);
@@ -235,7 +236,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function toggleDilationView() {
-        // No-op since original is always visible
+        showPreImage = !showPreImage;
+        document.getElementById('toggleDilationView').textContent = showPreImage ? 'Hide Pre-Image' : 'Show Pre-Image';
+        transformationLog.push(showPreImage ? 'Showed pre-image' : 'Hid pre-image');
+        updateLog();
+        updateDisplay();
     }
 
     function dilate() {
@@ -244,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         hasDilated = true;
-        document.getElementById('toggleDilationView').disabled = true;
+        document.getElementById('toggleDilationView').disabled = false;
         applyTransformation((point, center) => {
             const translatedX = point.x - center.x;
             const translatedY = point.y - center.y;
@@ -332,7 +337,7 @@ document.addEventListener('DOMContentLoaded', () => {
             points.length = 0;
             points.push(...history.pop());
             hasDilated = history.length > 0;
-            document.getElementById('toggleDilationView').disabled = true;
+            document.getElementById('toggleDilationView').disabled = !hasDilated;
             transformationLog.push('Undo');
             updateLog();
             updateDisplay();
@@ -342,6 +347,8 @@ document.addEventListener('DOMContentLoaded', () => {
         points.length = 0;
         transformationLog.length = 0;
         hasDilated = false;
+        showPreImage = true;
+        document.getElementById('toggleDilationView').textContent = 'Hide Pre-Image';
         document.getElementById('toggleDilationView').disabled = true;
         updateLog();
         updateDisplay();
@@ -359,6 +366,8 @@ document.addEventListener('DOMContentLoaded', () => {
             points.length = 0;
             points.push(...JSON.parse(saved));
             hasDilated = false;
+            showPreImage = true;
+            document.getElementById('toggleDilationView').textContent = 'Hide Pre-Image';
             document.getElementById('toggleDilationView').disabled = true;
             transformationLog.push('Loaded shape');
             updateLog();
@@ -383,9 +392,11 @@ document.addEventListener('DOMContentLoaded', () => {
         showTransformationHistory = !showTransformationHistory;
         updateLog();
     });
+    document.getElementById('toggleDilationView').addEventListener('click', toggleDilationView);
 
     // Initial setup
     canvas.width = 700;
     canvas.height = 700;
+    document.getElementById('toggleDilationView').disabled = true;
     updateDisplay();
 });
